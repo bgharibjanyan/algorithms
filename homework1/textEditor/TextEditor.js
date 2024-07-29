@@ -36,7 +36,7 @@ export default class TextEditor {
         let text = "";
         const textTmp = [...this.text.content];
         while (textTmp.length > 0) {
-            text += textTmp.shift() + " ";
+            text += `${textTmp.shift()} `;
         }
         console.log(text.trim());
     }

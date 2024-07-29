@@ -4,27 +4,27 @@ export default class Printer {
 
    constructor(){
 
-    this.db=new Queue
+    this.db = new Queue;
 
    }
 
    addJob(job){
 
-        this.db.enqueue(job)
-        console.log('new Jiob added')
+        this.db.enqueue(job);
+        console.log('new Jiob added');
    }
 
    logJob(){
 
-        console.log('job log',this.db.peek())
+        console.log('job log',this.db.peek());
 
         this.db.dequeue();
         
         console.log('todo');
-        this.getSize()
+        this.getSize();
    }
 
    getSize(){
-         console.log((this.db.rear-this.db.front))
+         console.log((this.db.rear - this.db.front));
    }
 }

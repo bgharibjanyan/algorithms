@@ -12,7 +12,7 @@ export default class Queue{
         this.rear++;
 
     }
-    dequeue(){
+    dequeue()  {
         this.front++; 
     }
     peek(){
@@ -20,9 +20,9 @@ export default class Queue{
     }
     isEmpty(){
         if(this.front === this.rear){
-            return true
+            return true;
         }else{
-            return false
+            return false;
         }
     }
 }
