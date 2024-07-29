@@ -15,7 +15,7 @@ export default class TextEditor {
     }
 
     undo() {
-        if (this.undoStack.size() > 0) {
+        if (this.undoStack.isEmpty()) {
             const lastText = this.undoStack.top();
             this.redoStack.push(lastText);
             this.text.pop();
@@ -24,7 +24,7 @@ export default class TextEditor {
     }
 
     redo() {
-        if (this.redoStack.size() > 0) {
+        if (this.redoStack.isEmpty()) {
             const lastText = this.redoStack.top();
             this.undoStack.push(lastText);
             this.text.push(lastText);
