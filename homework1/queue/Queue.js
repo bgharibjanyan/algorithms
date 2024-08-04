@@ -1,28 +1,39 @@
-export default class Queue{
-    constructor (){
-        this.content = [];
-
-        this.front = 0;
-        this.rear = 0;
-
+export default class Queue {
+    constructor() {
+      this.content = [];
+      this.front = 0;
+      this.rear = 0;
     }
-    
-    enqueue(value){
-        this.content[this.rear] = value;
-        this.rear++;
-
+  
+    enqueue(value) {
+      this.content[this.rear] = value;
+      this.rear++;
     }
-    dequeue()  {
-        this.front++; 
+  
+    dequeue() {
+      if (this.isEmpty()) {
+        return undefined;
+      }
+      const value = this.content[this.front];
+      this.front++;
+      return value;
     }
-    peek(){
-        return this.content[this.front]
+  
+    peek() {
+      return this.content[this.front];
     }
-    isEmpty(){
-        if(this.front === this.rear){
-            return true;
-        }else{
-            return false;
-        }
+  
+    isEmpty() {
+      return this.front === this.rear;
     }
-}
+  
+    size() {
+      return this.rear - this.front;
+    }
+  
+    clear() {
+      this.content = [];
+      this.front = 0;
+      this.rear = 0;
+    }
+  }
