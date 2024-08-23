@@ -42,7 +42,7 @@ export default class AvlTree {
   }
 
   delete(value) {
-    this.root = this.onNodeDelete(this.root, value);
+    this.root = this.beforeDelete(this.root, value);
   }
 
   search(value, node = this.root) {
@@ -61,15 +61,15 @@ export default class AvlTree {
     }
   }
 
-  onNodeDelete(node, value) {
+  beforeDelete(node, value) {
     if (!node) {
       return node;
     }
 
     if (value < node.data) {
-      node.left = this.onNodeDelete(node.left, value);
+      node.left = this.beforeDelete(node.left, value);
     } else if (value > node.data) {
-      node.right = this.onNodeDelete(node.right, value);
+      node.right = this.beforeDelete(node.right, value);
     } else {
       if (!node.left || !node.right) {
         const temp = node.left ? node.left : node.right;
@@ -83,7 +83,7 @@ export default class AvlTree {
 
       const temp = this.getMinValueNode(node.right);
       node.data = temp.data;
-      node.right = this.onNodeDelete(node.right, temp.data);
+      node.right = this.beforeDelete(node.right, temp.data);
     }
 
     node.height = 1 + Math.max(this.getHeight(node.left), this.getHeight(node.right));
